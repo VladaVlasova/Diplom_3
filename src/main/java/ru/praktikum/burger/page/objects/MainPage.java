@@ -1,11 +1,12 @@
-package web.pageObjects;
+package ru.praktikum.burger.page.objects;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Selenide.page;
 public class MainPage {
     @FindBy(how = How.CLASS_NAME, using = "AppHeader_header__logo__2D0X2")
     private SelenideElement mainLogoButton;
@@ -29,26 +30,29 @@ public class MainPage {
     private SelenideElement mainFillingsButton;
     @FindBy(how = How.XPATH, using = "//p[text()='Мясо бессмертных моллюсков Protostomia']")
     private SelenideElement mainFillingProtostomiaText;
-    public void clickOnMainLogoButton() {
-        mainLogoButton.shouldBe(enabled).click();
-    }
+    @Step("Клик по Личный кабинет")
     public LoginPage clickOnMainPersonalAreaButton() {
         mainPersonalAreaButton.shouldBe(enabled).click();
-        return page(LoginPage.class);
+        return Selenide.page(LoginPage.class);
     }
+    @Step("Клик по Войти в аккаунт")
     public LoginPage clickOnMainLoginButton() {
         mainLoginButton.shouldBe(enabled).click();
-        return page(LoginPage.class);
+        return Selenide.page(LoginPage.class);
     }
+    @Step("Клик по Конструктор")
     public void clickOnMainConstructorButton() {
         mainConstructorButton.shouldBe(enabled).click();
     }
+    @Step("Клик по Булки")
     public void clickOnMainBunsButton() {
         mainBunsButton.shouldBe(enabled).click();
     }
+    @Step("Клик по Соусы")
     public void clickOnMainSaucesButton() {
         mainSaucesButton.shouldBe(enabled).click();
     }
+    @Step("Клик по Начинки")
     public void clickOnMainFillingsButton() {
         mainFillingsButton.shouldBe(enabled).click();
     }

@@ -1,4 +1,4 @@
-package API;
+package ru.praktikum.burger.api;
 
 public class Endpoints {
     public static final String URL = "https://stellarburgers.nomoreparties.site/";

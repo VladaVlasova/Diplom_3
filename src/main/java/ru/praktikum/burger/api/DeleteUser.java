@@ -1,7 +1,10 @@
-package API;
+package ru.praktikum.burger.api;
+
+import io.qameta.allure.Step;
 
 import static io.restassured.RestAssured.given;
 public class DeleteUser {
+    @Step("Удалить юзера")
     public void deleteUser() {
         TestFields.response = given().log().all()
                 .baseUri(Endpoints.URL)

@@ -1,5 +1,5 @@
-import API.Endpoints;
-import API.TestFields;
+import ru.praktikum.burger.api.Endpoints;
+import ru.praktikum.burger.api.TestFields;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -7,9 +7,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
-import web.pageObjects.LoginPage;
-import web.pageObjects.MainPage;
-import web.pageObjects.RegisterPage;
+import ru.praktikum.burger.page.objects.LoginPage;
+import ru.praktikum.burger.page.objects.MainPage;
+import ru.praktikum.burger.page.objects.RegisterPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.webdriver;

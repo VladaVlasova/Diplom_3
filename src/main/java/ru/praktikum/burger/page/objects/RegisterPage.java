@@ -1,11 +1,12 @@
-package web.pageObjects;
+package ru.praktikum.burger.page.objects;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Selenide.page;
 
 public class RegisterPage {
     @FindBy(how = How.XPATH, using = ".//label[text()='Имя']/following-sibling::input")  // поле имя
@@ -20,29 +21,35 @@ public class RegisterPage {
     private SelenideElement registerLoginButton;
     @FindBy(how = How.XPATH, using = "//p[text()='Некорректный пароль']")  // текст Некорректный пароль
     private SelenideElement invalidPasswordText;
+    @Step("ввод имени")
     public void setRegisterNameField(String a) {
         registerNameField.setValue(a);
     }
+    @Step("ввод email")
     public void setRegisterEmailField(String a) {
         registerEmailField.setValue(a);
     }
+    @Step("ввод пароля")
     public void setRegisterPasswordField(String a) {
         registerPasswordField.setValue(a);
     }
+    @Step("клик по Зарегистрироваться")
     public void clickOnRegisterRegisterButton() {
         registerRegisterButton.scrollTo();
         registerRegisterButton.shouldBe(enabled).click();
     }
+    @Step("клик по Войти")
     public LoginPage clickOnRegisterLoginButton() {
         registerLoginButton.shouldBe(enabled).click();
-        return page(LoginPage.class);
+        return Selenide.page(LoginPage.class);
     }
+    @Step("Заполнение формы регистрации и клик по Зарегистрироваться")
     public LoginPage setRegisterFieldsAndClickRegisterButton(String a, String b, String c) {
         setRegisterNameField(a);
         setRegisterEmailField(b);
         setRegisterPasswordField(c);
         clickOnRegisterRegisterButton();
-        return page(LoginPage.class);
+        return Selenide.page(LoginPage.class);
     }
     public String getTextInvalidPasswordText() {
         return invalidPasswordText.getText();

@@ -1,7 +1,7 @@
-import API.Endpoints;
-import API.TestFields;
-import API.DeleteUser;
-import API.RegisterUser;
+import ru.praktikum.burger.api.Endpoints;
+import ru.praktikum.burger.api.TestFields;
+import ru.praktikum.burger.api.DeleteUser;
+import ru.praktikum.burger.api.RegisterUser;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -9,7 +9,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
-import web.pageObjects.*;
+import ru.praktikum.burger.page.objects.AutorisedMainPage;
+import ru.praktikum.burger.page.objects.AutorisedPersonalPage;
+import ru.praktikum.burger.page.objects.LoginPage;
+import ru.praktikum.burger.page.objects.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.webdriver;

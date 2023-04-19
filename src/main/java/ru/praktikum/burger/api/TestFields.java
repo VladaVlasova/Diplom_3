@@ -1,4 +1,4 @@
-package API;
+package ru.praktikum.burger.api;
 
 import io.restassured.response.Response;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -10,6 +10,4 @@ public class TestFields {
     public String invalidPassword = RandomStringUtils.randomAlphabetic(5);
     public String name = RandomStringUtils.randomAlphabetic(10);
     public static String accessTokenAfterRegister;
-    public static String chromeDriver = "chromedriver";
-    public static String yandexDriver = "yandexdriver";
 }

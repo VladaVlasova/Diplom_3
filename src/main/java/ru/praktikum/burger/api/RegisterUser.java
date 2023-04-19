@@ -1,8 +1,10 @@
-package API;
+package ru.praktikum.burger.api;
+import io.qameta.allure.Step;
 import org.json.JSONObject;
 
 import static io.restassured.RestAssured.given;
 public class RegisterUser {
+    @Step("Создать юзера")
     public void registerUser(String email, String password, String name) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("email", email);

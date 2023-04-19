@@ -1,6 +1,7 @@
-package web.pageObjects;
+package ru.praktikum.burger.page.objects;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -24,23 +25,29 @@ public class LoginPage {
     private SelenideElement loginLogoButton;
     @FindBy(how = How.XPATH, using = "//p[text()='Конструктор']")
     private SelenideElement loginConstructorButton;
+    @Step("ввод email")
     public void setLoginEmailField(String a) {
         loginEmailField.setValue(a);
     }
+    @Step("ввод пароля")
     public void setLoginPasswordField(String a) {
         loginPasswordField.setValue(a);
     }
+    @Step("клик по Войти")
     public void clickOnLoginLoginButton() {
         loginLoginButton.shouldBe(enabled).click();
     }
+    @Step("клик по Зарегистрироваться")
     public RegisterPage clickOnLoginRegisterButton() {
         loginRegisterButton.shouldBe(enabled).click();
         return page(RegisterPage.class);
     }
+    @Step("клик по Восстановить пароль")
     public ForgotPasswordPage clickOnLoginForgotPasswordButton() {
         loginForgotPasswordButton.shouldBe(enabled).click();
         return page(ForgotPasswordPage.class);
     }
+    @Step("Заполнение полей авторизации и клик по Войти")
     public AutorisedMainPage setLoginFields(String a, String b) {
         setLoginEmailField(a);
         setLoginPasswordField(b);
@@ -53,10 +60,12 @@ public class LoginPage {
     public String getTextloginLoginText() {
         return loginLoginText.getText();
     }
+    @Step("Клик на логотип")
     public MainPage clickOnLogoButton() {
         loginLogoButton.shouldBe(enabled).click();
         return page(MainPage.class);
     }
+    @Step("Клик по кнопке Конструктор")
     public MainPage clickOnLoginConstructorButton() {
         loginConstructorButton.shouldBe(enabled).click();
         return page(MainPage.class);
