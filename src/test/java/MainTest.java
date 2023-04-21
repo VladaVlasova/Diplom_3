@@ -59,7 +59,6 @@ public class MainTest {
         LoginPage loginPage1 = autorisedPersonalAreaPage.clickOnAutorisedPersonalAreaExitButton();
         Assert.assertTrue(loginPage1.getTextloginLoginText().contains("Вход"));
         TestFields.accessTokenAfterRegister = TestFields.response.path("accessToken");
-        deleteUser.deleteUser();
     }
     @Test
     @DisplayName("Клик на раздел 'Соусы' открывает список соусов")
@@ -79,6 +78,12 @@ public class MainTest {
         mainPage.clickOnMainFillingsButton();
         mainPage.clickOnMainBunsButton();
         Assert.assertTrue(mainPage.getTextMainBunFluorescentText().contains("Флюоресцентная булка R2-D3"));
+    }
+    @After
+    public void deleteUSer() {
+        if (TestFields.accessTokenAfterRegister != null) {
+            deleteUser.deleteUser();
+        }
     }
     @After
     public void closeDriver() {

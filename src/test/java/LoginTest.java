@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 import ru.praktikum.burger.page.objects.*;
-import ru.praktikum.burger.page.objects.*;
-//import web.pageObjects.*;
 
 import static ru.praktikum.burger.api.Endpoints.URL;
 import static com.codeborne.selenide.Selenide.open;
@@ -35,7 +33,6 @@ public class LoginTest {
         LoginPage loginPage = mainPage.clickOnMainLoginButton();
         AutorisedMainPage autorisedMainPage1 = loginPage.setLoginFields(testFields.email, testFields.password);
         Assert.assertTrue(autorisedMainPage1.getTextAutorisedMainMakeOrderButton().contains("Оформить заказ"));
-        deleteUser.deleteUser();
     }
     @Test
     @DisplayName("вход через кнопку «Личный кабинет»")
@@ -45,7 +42,6 @@ public class LoginTest {
         AutorisedMainPage autorisedMainPage = loginPage.setLoginFields(testFields.email, testFields.password);
         Assert.assertTrue(autorisedMainPage.getTextAutorisedMainMakeOrderButton().contains("Оформить заказ"));
         TestFields.accessTokenAfterRegister = TestFields.response.path("accessToken");
-        deleteUser.deleteUser();
     }
     @Test
     @DisplayName("вход через кнопку в форме регистрации")
@@ -57,7 +53,6 @@ public class LoginTest {
         AutorisedMainPage autorisedMainPage1 = loginPage1.setLoginFields(testFields.email, testFields.password);
         Assert.assertTrue(autorisedMainPage1.getTextAutorisedMainMakeOrderButton().contains("Оформить заказ"));
         TestFields.accessTokenAfterRegister = TestFields.response.path("accessToken");
-        deleteUser.deleteUser();
     }
     @Test
     @DisplayName("вход через кнопку в форме восстановления пароля")
@@ -69,7 +64,12 @@ public class LoginTest {
         AutorisedMainPage autorisedMainPage1 = loginPage1.setLoginFields(testFields.email, testFields.password);
         Assert.assertTrue(autorisedMainPage1.getTextAutorisedMainMakeOrderButton().contains("Оформить заказ"));
         TestFields.accessTokenAfterRegister = TestFields.response.path("accessToken");
-        deleteUser.deleteUser();
+    }
+    @After
+    public void deleteUSer() {
+        if (TestFields.accessTokenAfterRegister != null) {
+            deleteUser.deleteUser();
+        }
     }
     @After
     public void closeDriver() {
